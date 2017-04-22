@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 17 17:14:24 2017 Antonin Rapini
-** Last update Tue Apr 18 01:10:33 2017 Antonin Rapini
+** Last update Fri Apr 21 19:17:56 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -22,7 +22,7 @@ int		my_add_connection(t_room *room1, t_room *new_connection)
   while (room1->connections && room1->connections[i] != NULL)
     {
       if (my_strcmp(new_connection->name, room1->connections[i]->name) == 0)
-	return (1);
+	return (0);
       i++;
     }
   if ((connections = malloc(sizeof(t_room *) * (i + 2))) == NULL)
@@ -72,10 +72,10 @@ int		my_add_tunnel(char *buffer, t_lemin *lemin)
   if ((room1 = my_find_room(buffer, i, lemin->rooms)) == NULL)
     return (1);
   i++;
-  if ((room2 = my_find_room(buffer, 0, lemin->rooms)) == NULL)
+  if ((room2 = my_find_room(buffer + i, 0, lemin->rooms)) == NULL)
     return (1);
   if (my_strcmp(room1->name, room2->name) == 0)
-    return (1);
+    return (0);
   my_add_connection(room1, room2);
   my_add_connection(room2, room1);
   return (0);

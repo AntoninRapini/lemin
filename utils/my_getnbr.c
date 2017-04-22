@@ -5,17 +5,17 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Nov 20 00:36:16 2016 Antonin Rapini
-** Last update Sat Apr 15 18:47:09 2017 Antonin Rapini
+** Last update Thu Apr 20 17:37:40 2017 Antonin Rapini
 */
+
+#include <stdio.h>
 
 int my_getnbr_rec(char *str, int nbr, int init, int *ret)
 {
-  if (*str == '-')
-    return (-my_getnbr_rec(str + 1, nbr, init, ret));
-  else if (*str >= '0' && *str <= '9')
-    return (my_getnbr_rec(str + 1, (nbr * 10) + (*str - 48), init++, ret));
+  if (*str >= '0' && *str <= '9')
+    return (my_getnbr_rec(str + 1, (nbr * 10) + (*str - 48), 1, ret));
   else if ((*str == '\0' || *str == ' ' || *str == '#') && init > 0)
-    return (nbr);
+      return (nbr);
   else
     {
       if (ret)

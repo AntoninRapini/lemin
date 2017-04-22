@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Mon Apr 17 18:52:36 2017 Antonin Rapini
+** Last update Fri Apr 21 19:39:02 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -14,12 +14,16 @@
 #include "utils.h"
 #include "sources.h"
 
+#include <stdio.h>
+
 void *my_free_room(t_room *room)
 {
   if (room != NULL)
     {
       if (room->name != NULL)
 	free(room->name);
+      if (room->connections != NULL)
+	free(room->connections);
       free(room);
     }
   return (NULL);
@@ -61,18 +65,20 @@ t_room		*my_getroom(char *buffer)
 	      i += my_nbrlen(room->pos.x) + 1;
 	      room->pos.y = my_getnbr(buffer + i, &ret);
 	      if (ret != -1)
-		  return (room);
+		return (room);
 	    }
 	}
     }
   return (my_free_room(room));
 }
 
-int my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
+int		my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
 {
+  t_roomlist	*item;
+
   if ((*is_start))
     {
-      if (lemin->start == NULL)
+      if (lemin->start != NULL)
 	return (1);
       lemin->start = room;
       (*is_start) = 0;
@@ -84,12 +90,15 @@ int my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
       lemin->end = room;
       (*is_end) = 0;
     }
-  if (my_add_to_roomlist(room, lemin->rooms))
+  if ((item = my_init_roomlist_item()) == NULL)
     return (1);
+  item->room = room;
+  item->next = lemin->rooms;
+  lemin->rooms = item;
   return (0);
 }
 
-int		my_parse_rooms(char *buffer, int fd, t_lemin *lemin)
+int		my_parse_rooms(char **buffer, int fd, t_lemin *lemin)
 {
   int		is_start;
   int		is_end;
@@ -97,20 +106,20 @@ int		my_parse_rooms(char *buffer, int fd, t_lemin *lemin)
 
   is_start = 0;
   is_end = 0;
-  while ((buffer = get_next_line(fd)) != NULL)
+  while (((*buffer) = get_next_line(fd)) != NULL)
     {
-      if (my_strcmp(buffer, START_STR) == 0)
+      if (my_strcmp((*buffer), START_STR) == 0)
 	is_start = 1;
-      else if (my_strcmp(buffer, END_STR) == 0)
-	is_end = 0;
-      else if (!my_is_comment(buffer))
+      else if (my_strcmp((*buffer), END_STR) == 0)
+	is_end = 1;
+      else if (!my_is_comment((*buffer)))
 	{
-	  if ((curr = my_getroom(buffer)) == NULL)
+	  if ((curr = my_getroom((*buffer))) == NULL)
 	    return (0);
 	  if (my_add_room(curr, lemin, &is_start, &is_end))
 	    return (1);
 	}
-      free(buffer);
+      free((*buffer));
     }
   return (0);
 }
