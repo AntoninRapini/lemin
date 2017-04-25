@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Apr 13 17:07:23 2017 Antonin Rapini
-** Last update Mon Apr 17 18:42:53 2017 Antonin Rapini
+** Last update Mon Apr 24 17:47:44 2017 Antonin Rapini
 */
 
 #ifndef LEMIN_H_
@@ -22,14 +22,15 @@ typedef struct	s_room
   char		*name;
   t_vector2	pos;
   struct s_room	**connections;
-  bool		passed_through;
+  int		visited;
+  bool		has_ant;
 }		t_room;
 
 typedef struct	s_path
 {
-  char		*name;
+  t_room	*room;
   struct s_path	*next;
-  bool		has_ant;
+  struct s_path	*previous;
 }		t_path;
 
 typedef struct		s_roomlist
@@ -42,6 +43,7 @@ typedef	struct		s_pathlist
 {
   t_path		*path;
   struct s_pathlist	*next;
+  int			size;
 }			t_pathlist;
 
 typedef struct	s_lemin

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:12:42 2017 Antonin Rapini
-** Last update Fri Apr 21 19:02:15 2017 Antonin Rapini
+** Last update Tue Apr 25 03:12:03 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -17,15 +17,15 @@ void my_show_lemin(t_lemin *lemin)
 {
   my_miniprintf("Number of ants : %i\n", lemin->ants);
   my_show_roomlist(lemin->rooms);
-  
+  my_show_pathlist(lemin->paths);
 }
 
 void *my_free_lemin(t_lemin *lemin)
 {
   if (lemin != NULL)
     {
-      /*     if (lemin->paths != NULL)
-	     my_free_pathlist(lemin->paths);*/
+      if (lemin->paths != NULL)
+	my_free_pathlist(lemin->paths);
       if (lemin->rooms != NULL)
 	my_free_roomlist(lemin->rooms);
       free(lemin);
@@ -55,5 +55,6 @@ t_lemin		*my_create_lemin()
     return (NULL);
   if (my_parse_file(lemin))
     return (my_free_lemin(lemin));
+  lemin->paths = my_create_pathlist(lemin);
   return (lemin);
 }

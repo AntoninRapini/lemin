@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Fri Apr 21 19:39:02 2017 Antonin Rapini
+** Last update Tue Apr 25 01:59:44 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -13,8 +13,6 @@
 #include <fcntl.h>
 #include "utils.h"
 #include "sources.h"
-
-#include <stdio.h>
 
 void *my_free_room(t_room *room)
 {
@@ -39,7 +37,8 @@ t_room		*my_init_room()
   room->pos.x = 0;
   room->pos.y = 0;
   room->connections = NULL;
-  room->passed_through = 0;
+  room->visited = 0;
+  room->has_ant = 0;
   return (room);
 }
 

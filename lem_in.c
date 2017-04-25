@@ -5,12 +5,14 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Apr 13 15:33:06 2017 Antonin Rapini
-** Last update Fri Apr 21 19:46:12 2017 Antonin Rapini
+** Last update Tue Apr 25 03:40:24 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
 #include "lemin.h"
 #include "sources.h"
+
+#include <stdio.h>
 
 int		 main(void)
 {
