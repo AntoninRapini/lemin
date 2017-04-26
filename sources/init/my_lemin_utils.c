@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:12:42 2017 Antonin Rapini
-** Last update Tue Apr 25 03:12:03 2017 Antonin Rapini
+** Last update Wed Apr 26 20:42:22 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -15,8 +15,8 @@
 
 void my_show_lemin(t_lemin *lemin)
 {
-  my_miniprintf("Number of ants : %i\n", lemin->ants);
-  my_show_roomlist(lemin->rooms);
+  my_miniprintf("#number_of_ants\n%i\n", lemin->ants);
+  my_show_roomlist(lemin->rooms, lemin->start, lemin->end);
   my_show_pathlist(lemin->paths);
 }
 

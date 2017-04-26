@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Fri Apr 21 18:51:30 2017 Antonin Rapini
+** Last update Wed Apr 26 21:08:17 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -13,7 +13,6 @@
 #include <fcntl.h>
 #include "utils.h"
 #include "sources.h"
-#include <stdio.h>
 
 int	my_is_comment(char *line)
 {
@@ -50,6 +49,7 @@ int	my_parse_file(t_lemin *lemin)
   buffer = NULL;
   if (my_parse_antcount(0, &(lemin->ants)))
     return (1);
+  my_miniprintf("#number_of_ants\n%i\n", lemin->ants);
   if (my_parse_rooms(&buffer, 0, lemin))
     return (1);
   if (my_parse_tunnels(buffer, 0, lemin))

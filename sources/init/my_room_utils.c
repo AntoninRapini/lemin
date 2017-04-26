@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Wed Apr 26 17:45:08 2017 Antonin Rapini
+** Last update Wed Apr 26 21:18:45 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -81,6 +81,7 @@ int		my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
 	return (1);
       lemin->start = room;
       (*is_start) = 0;
+      my_putstr("##start\n");
     }
   else if ((*is_end))
     {
@@ -88,9 +89,11 @@ int		my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
 	return (1);
       lemin->end = room;
       (*is_end) = 0;
+      my_putstr("##end\n");
     }
   if ((item = my_init_roomlist_item()) == NULL)
     return (1);
+  my_miniprintf("%s %i %i\n", room->name, room->pos.x, room->pos.y);
   item->room = room;
   item->next = lemin->rooms;
   lemin->rooms = item;
@@ -105,6 +108,7 @@ int		my_parse_rooms(char **buffer, int fd, t_lemin *lemin)
 
   is_start = 0;
   is_end = 0;
+  my_putstr("#rooms\n");
   while (((*buffer) = get_next_line(fd)) != NULL)
     {
       if (my_strcmp((*buffer), START_STR) == 0)

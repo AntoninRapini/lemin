@@ -5,31 +5,28 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Apr 16 00:05:46 2017 Antonin Rapini
-** Last update Fri Apr 21 19:26:07 2017 Antonin Rapini
+** Last update Wed Apr 26 20:47:56 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
 #include "sources.h"
 #include "utils.h"
 
-void	my_show_roomlist(t_roomlist *rooms)
+void my_show_roomlist(t_roomlist *rooms, t_room *start, t_room *end)
 {
-  int	i;
-
+  my_putstr("#rooms\n");
   while (rooms != NULL)
     {
-      i = 0;
-      my_miniprintf("Name : %s PosX : %i PosY : %i Connections : ", rooms->room->name,
+      if (my_strcmp(rooms->room->name, start->name))
+	my_putstr("##start\n");
+      else if (my_strcmp(rooms->room->name, end->name))
+	my_putstr("##end\n");
+      my_miniprintf("%s %i %i\n", rooms->room->name,
 		    rooms->room->pos.x, rooms->room->pos.y);
-      while (rooms->room->connections && rooms->room->connections[i])
-	{
-	  my_miniprintf("%s ", rooms->room->connections[i]->name);
-	  i++;
-	}
-      my_miniprintf("\n");
       rooms = rooms->next;
     }
 }
+
 void		*my_free_roomlist(t_roomlist *rooms)
 {
   t_roomlist	*tmp;
