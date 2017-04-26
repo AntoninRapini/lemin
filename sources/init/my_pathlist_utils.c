@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Apr 21 19:47:01 2017 Antonin Rapini
-** Last update Tue Apr 25 05:14:07 2017 Antonin Rapini
+** Last update Wed Apr 26 20:29:45 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -30,6 +30,7 @@ void		*my_free_pathlist(t_pathlist *paths)
     {
       tmp = paths;
       paths = paths->next;
+      my_free_path(tmp->path);
       free(tmp);
     }
   return (NULL);

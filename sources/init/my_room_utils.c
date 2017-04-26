@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Tue Apr 25 01:59:44 2017 Antonin Rapini
+** Last update Wed Apr 26 17:45:08 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -37,7 +37,7 @@ t_room		*my_init_room()
   room->pos.x = 0;
   room->pos.y = 0;
   room->connections = NULL;
-  room->visited = 0;
+  room->visited = -1;
   room->has_ant = 0;
   return (room);
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Mar  2 17:18:06 2017 Antonin Rapini
-** Last update Tue Apr 25 03:11:14 2017 Antonin Rapini
+** Last update Wed Apr 26 18:26:09 2017 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -49,7 +49,7 @@ void my_get_paths(t_pathlist **, t_room *, t_room *);
 
 // Path utils
 t_path *my_init_path(t_room *);
-t_path *my_copy_path(t_path *);
+t_path *my_copy_path(t_path *, t_room *);
 void *my_free_path(t_path *);
 void my_show_path(t_path *);
 

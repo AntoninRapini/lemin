@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 24 18:37:19 2017 Antonin Rapini
-** Last update Tue Apr 25 04:26:52 2017 Antonin Rapini
+** Last update Wed Apr 26 20:24:05 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -38,15 +38,16 @@ t_path		*my_init_path(t_room *room)
 {
   t_path	*path;
 
-  if ((path = malloc(sizeof(path))) == NULL)
+  if ((path = malloc(sizeof(t_path))) == NULL)
     return (NULL);
   path->room = room;
+  path->i = 0;
   path->next = NULL;
   path->previous = NULL;
   return (path);
 }
 
-t_path		*my_copy_path(t_path *original)
+t_path		*my_copy_path(t_path *original, t_room *end)
 {
   t_path	*new_start;
   t_path	*curr;
@@ -62,5 +63,7 @@ t_path		*my_copy_path(t_path *original)
       curr = curr->next;
       original = original->next;
     }
+  if ((curr->next = my_init_path(end)) == NULL)
+    return (my_free_path(new_start));
   return (new_start);
 }
