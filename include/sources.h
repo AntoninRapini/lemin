@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Mar  2 17:18:06 2017 Antonin Rapini
-** Last update Wed Apr 26 20:46:20 2017 Antonin Rapini
+** Last update Thu Apr 27 21:12:50 2017 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -16,6 +16,10 @@
 int my_parse_file(t_lemin *);
 int my_parse_antcount(int, int *);
 int my_is_comment(char *);
+void my_remove_crossroads(t_pathlist *);
+
+// Algo
+void my_move_ants(t_lemin *lemin);
 
 // Lemin utils
 t_lemin *my_create_lemin();
@@ -46,6 +50,7 @@ int	my_parse_tunnels(char *, int, t_lemin *);
 int my_comp_room(t_room *, t_room *);
 int my_can_follow(t_path *, int, t_path *);
 void my_get_paths(t_pathlist **, t_room *, t_room *);
+void my_get_paths_all(t_pathlist **, t_room *, t_room *);
 
 // Path utils
 t_path *my_init_path(t_room *);
@@ -56,8 +61,10 @@ void my_show_path(t_path *);
 // Pathlist utils
 t_pathlist *my_create_pathlist(t_lemin *);
 t_pathlist *my_init_pathlist_item(t_path *);
-void my_add_path(t_pathlist **, t_path *);
+void my_add_path(t_pathlist **, t_path *, int);
 void *my_free_pathlist(t_pathlist *);
 void my_show_pathlist(t_pathlist *);
+void my_remove_path(t_pathlist **, t_room *);
+void my_sort_pathlist(t_pathlist **);
 
 #endif /* !SOURCES_H_ */

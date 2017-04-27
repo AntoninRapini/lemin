@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Apr 13 17:07:23 2017 Antonin Rapini
-** Last update Wed Apr 26 19:05:30 2017 Antonin Rapini
+** Last update Thu Apr 27 18:08:36 2017 Antonin Rapini
 */
 
 #ifndef LEMIN_H_
@@ -23,7 +23,7 @@ typedef struct	s_room
   t_vector2	pos;
   struct s_room	**connections;
   int		visited;
-  bool		has_ant;
+  int		ant;
 }		t_room;
 
 typedef struct	s_path

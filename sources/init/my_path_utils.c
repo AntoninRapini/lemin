@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 24 18:37:19 2017 Antonin Rapini
-** Last update Wed Apr 26 20:24:05 2017 Antonin Rapini
+** Last update Thu Apr 27 21:32:53 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -60,10 +60,12 @@ t_path		*my_copy_path(t_path *original, t_room *end)
     {
       if ((curr->next = my_init_path(original->room)) == NULL)
 	return (my_free_path(new_start));
+      curr->next->previous = curr;
       curr = curr->next;
       original = original->next;
     }
   if ((curr->next = my_init_path(end)) == NULL)
     return (my_free_path(new_start));
+  curr->next->previous = curr;
   return (new_start);
 }

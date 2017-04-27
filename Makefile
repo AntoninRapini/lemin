@@ -5,7 +5,7 @@
 ## Login   <antonin.rapini@epitech.net>
 ## 
 ## Started on  Tue Nov 29 08:50:17 2016 Antonin Rapini
-## Last update Tue Apr 25 01:50:02 2017 Antonin Rapini
+## Last update Thu Apr 27 21:13:45 2017 Antonin Rapini
 ##
 
 CFLAGS	+= -Wall -Werror -Wextra
@@ -17,8 +17,12 @@ SRC	=	sources/init/my_lemin_utils.c		\
 		sources/init/my_room_utils.c		\
 		sources/init/my_tunnel_utils.c		\
 		sources/init/my_get_paths.c		\
+		sources/init/my_get_paths_all.c		\
 		sources/init/my_path_utils.c		\
 		sources/init/my_pathlist_utils.c	\
+		sources/init/my_sort_pathlist.c		\
+		sources/init/my_remove_crossroads.c	\
+		sources/my_move_ants.c			\
 		utils/my_display_utils.c		\
 		utils/my_miniprintf.c			\
 		utils/get_next_line.c			\

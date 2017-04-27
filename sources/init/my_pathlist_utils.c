@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Apr 21 19:47:01 2017 Antonin Rapini
-** Last update Wed Apr 26 20:29:45 2017 Antonin Rapini
+** Last update Thu Apr 27 23:06:28 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -47,7 +47,7 @@ t_pathlist	*my_init_pathlist_item(t_path *path)
   return (item);
 }
 
-void		my_add_path(t_pathlist **paths, t_path *path)
+void		my_add_path(t_pathlist **paths, t_path *path, int size)
 {
   t_pathlist	*new_path;
 
@@ -55,6 +55,7 @@ void		my_add_path(t_pathlist **paths, t_path *path)
     {
       if ((new_path = my_init_pathlist_item(path)) != NULL)
 	{
+	  new_path->size = size;
 	  new_path->next = *paths;
 	  (*paths) = new_path;
 	}
@@ -67,5 +68,7 @@ t_pathlist	*my_create_pathlist(t_lemin *lemin)
 
   pathlist = NULL;
   my_get_paths(&pathlist, lemin->start, lemin->end);
+  my_sort_pathlist(&pathlist);
+  my_remove_crossroads(pathlist);
   return (pathlist);
 }
