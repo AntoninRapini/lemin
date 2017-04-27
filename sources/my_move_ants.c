@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Apr 26 21:21:14 2017 Antonin Rapini
-** Last update Thu Apr 27 23:31:56 2017 Antonin Rapini
+** Last update Thu Apr 27 23:54:09 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -77,6 +77,7 @@ void	my_move_ants(t_lemin *lemin)
 
   ants_left = lemin->ants;
   ants_arrived = 0;
+  my_putstr("#moves\n");
   while (ants_arrived < lemin->ants)
     {
       my_play_round(&ants_arrived, lemin->paths);
