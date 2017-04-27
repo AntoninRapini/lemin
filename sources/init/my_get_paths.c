@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Apr 23 19:03:39 2017 Antonin Rapini
-** Last update Thu Apr 27 05:23:24 2017 Antonin Rapini
+** Last update Thu Apr 27 23:27:05 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -58,7 +58,7 @@ void		my_get_paths(t_pathlist **pathlist, t_room *start, t_room *goal)
   curr = pathstart;
   while (curr != NULL)
     {
-      while (curr->room->connections[curr->i])
+      while (curr->room->connections && curr->room->connections[curr->i])
 	{
 	  if (!my_comp_room(curr->room->connections[curr->i], goal))
 	    {

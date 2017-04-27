@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Fri Apr 21 19:47:01 2017 Antonin Rapini
-** Last update Thu Apr 27 23:06:28 2017 Antonin Rapini
+** Last update Thu Apr 27 23:24:43 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -68,7 +68,10 @@ t_pathlist	*my_create_pathlist(t_lemin *lemin)
 
   pathlist = NULL;
   my_get_paths(&pathlist, lemin->start, lemin->end);
-  my_sort_pathlist(&pathlist);
-  my_remove_crossroads(pathlist);
+  if (pathlist != NULL)
+    {
+      my_sort_pathlist(&pathlist);
+      my_remove_crossroads(pathlist);
+    }
   return (pathlist);
 }

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:12:42 2017 Antonin Rapini
-** Last update Thu Apr 27 15:23:08 2017 Antonin Rapini
+** Last update Thu Apr 27 23:27:48 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -55,6 +55,7 @@ t_lemin		*my_create_lemin()
     return (NULL);
   if (my_parse_file(lemin))
     return (my_free_lemin(lemin));
-  lemin->paths = my_create_pathlist(lemin);
+  if ((lemin->paths = my_create_pathlist(lemin)) == NULL)
+    return (NULL);
   return (lemin);
 }
