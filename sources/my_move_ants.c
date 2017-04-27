@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Apr 26 21:21:14 2017 Antonin Rapini
-** Last update Thu Apr 27 23:22:41 2017 Antonin Rapini
+** Last update Thu Apr 27 23:31:56 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -47,7 +47,7 @@ void		my_place_ants(int *ants_left, t_pathlist *paths, int ants, int *ants_arriv
 	      (*ants_arrived)++;
 	      paths->path->next->room->ant = paths->path->next->next == NULL
 		? 0 : ants - (*ants_left);
-	      my_miniprintf("P%i-%s ", paths->path->next->room->ant, paths->path->next->room->name);
+	      my_miniprintf("P%i-%s ", ants - (*ants_left), paths->path->next->room->name);
 	    }
 	  else if (paths->size - (*ants_left) < start->size)
 	    {
@@ -77,7 +77,6 @@ void	my_move_ants(t_lemin *lemin)
 
   ants_left = lemin->ants;
   ants_arrived = 0;
-  my_show_pathlist(lemin->paths);
   while (ants_arrived < lemin->ants)
     {
       my_play_round(&ants_arrived, lemin->paths);
