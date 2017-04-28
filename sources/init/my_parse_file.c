@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Fri Apr 28 16:08:35 2017 Antonin Rapini
+** Last update Fri Apr 28 21:36:58 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -48,6 +48,8 @@ int	my_parse_file(t_lemin *lemin)
 
   buffer = NULL;
   if (my_parse_antcount(0, &(lemin->ants)))
+    return (1);
+  if (lemin->ants <= 0)
     return (1);
   my_miniprintf("#number_of_ants\n%i\n", lemin->ants);
   if (my_parse_rooms(&buffer, 0, lemin))
