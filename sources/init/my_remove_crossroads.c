@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Apr 27 04:40:33 2017 Antonin Rapini
-** Last update Thu Apr 27 23:05:09 2017 Antonin Rapini
+** Last update Fri Apr 28 22:15:58 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -24,33 +24,36 @@ int has_room(t_path *path, t_room *room)
   return (0);
 }
 
-void		my_remove_doubloons(t_pathlist *paths, t_path *path)
+void		my_remove_doubloons(t_pathlist *paths, t_path *ref)
 {
   t_pathlist	*curr;
-  t_pathlist	*tmp;
 
-  path = path->next;
-  while (path->next != NULL)
+  ref = ref->next;
+  while (ref->next != NULL)
     {
-      curr = paths;
-      while (curr && curr->next != NULL)
+      curr = paths->next;
+      while (curr != NULL)
 	{
-	  if (has_room(curr->next->path, path->room))
+	  if (has_room(curr->path, ref->room))
 	    {
-	      tmp = curr->next;
-	      curr->next = curr->next->next;
-	      my_free_path(tmp->path);
-	      free(tmp);
+	      paths->next = curr->next;
+	      my_free_path(curr->path);
+	      free(curr);
+	      curr = paths->next;
 	    }
-	  curr = curr->next;
+	  else
+	    {
+	      paths = curr;
+	      curr = curr->next;
+	    }
 	}
-      path = path->next;
+      ref = ref->next;
     }
 }
 
 void my_remove_crossroads(t_pathlist *paths)
 {
-  while (paths != NULL && paths->next != NULL)
+  while (paths != NULL)
     {
       my_remove_doubloons(paths, paths->path);
       paths = paths->next;
