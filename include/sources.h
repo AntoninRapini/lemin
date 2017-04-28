@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Thu Mar  2 17:18:06 2017 Antonin Rapini
-** Last update Thu Apr 27 21:12:50 2017 Antonin Rapini
+** Last update Fri Apr 28 15:48:34 2017 Antonin Rapini
 */
 
 #ifndef SOURCES_H_
@@ -42,7 +42,7 @@ void	my_show_roomlist(t_roomlist *, t_room *, t_room *);
 
 // Tunnel utils
 int	my_add_connection(t_room *, t_room *);
-t_room	*my_find_room(char *, int, t_roomlist *);
+t_room	*my_find_room(char *, t_roomlist *);
 int	my_add_tunnel(char *, t_lemin *);
 int	my_parse_tunnels(char *, int, t_lemin *);
 

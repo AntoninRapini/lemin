@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 17 17:14:24 2017 Antonin Rapini
-** Last update Fri Apr 28 15:21:34 2017 Antonin Rapini
+** Last update Fri Apr 28 15:49:54 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -41,18 +41,12 @@ int		my_add_connection(t_room *room1, t_room *new_connection)
   return (0);
 }
 
-t_room		*my_find_room(char *name, int size, t_roomlist *rooms)
+t_room		*my_find_room(char *name, t_roomlist *rooms)
 {
-  int		check;
-
   while (rooms != NULL)
     {
-      if ((check = size == 0 ?
-	   my_strcmp(name, rooms->room->name) :
-	   my_strncmp(name, rooms->room->name, size)) == 0)
-	{
-	  return (rooms->room);
-	}
+      if (my_strcmp(name, rooms->room->name) == 0)
+	return (rooms->room);
       rooms = rooms->next;
     }
   return (NULL);
@@ -63,20 +57,24 @@ int		my_add_tunnel(char *buffer, t_lemin *lemin)
   int		i;
   t_room	*room1;
   t_room	*room2;
-
+  char		save;
+  
   i = 0;
   while (buffer[i] && buffer[i] != '-')
     i++;
   if (!buffer[i])
     return (1);
-  if ((room1 = my_find_room(buffer, i, lemin->rooms)) == NULL)
+  save = buffer[i];
+  buffer[i] = '\0';
+  if ((room1 = my_find_room(buffer, lemin->rooms)) == NULL)
     return (1);
+  buffer[i] = save;
   i++;
-  if ((room2 = my_find_room(buffer + i, 0, lemin->rooms)) == NULL)
-    return (1);
-  if (my_strcmp(room1->name, room2->name) == 0)
+  if ((room2 = my_find_room(buffer + i, lemin->rooms)) == NULL)
     return (1);
   my_miniprintf("%s-%s\n", room1->name, room2->name);
+  if (my_strcmp(room1->name, room2->name) == 0)
+    return (0);
   my_add_connection(room1, room2);
   my_add_connection(room2, room1);
   return (0);
