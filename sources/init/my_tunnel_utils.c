@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 17 17:14:24 2017 Antonin Rapini
-** Last update Fri Apr 28 15:16:04 2017 Antonin Rapini
+** Last update Fri Apr 28 15:21:34 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -74,9 +74,9 @@ int		my_add_tunnel(char *buffer, t_lemin *lemin)
   i++;
   if ((room2 = my_find_room(buffer + i, 0, lemin->rooms)) == NULL)
     return (1);
-  my_miniprintf("%s-%s\n", room1->name, room2->name);
   if (my_strcmp(room1->name, room2->name) == 0)
     return (1);
+  my_miniprintf("%s-%s\n", room1->name, room2->name);
   my_add_connection(room1, room2);
   my_add_connection(room2, room1);
   return (0);
