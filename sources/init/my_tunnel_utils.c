@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 17 17:14:24 2017 Antonin Rapini
-** Last update Wed Apr 26 21:20:15 2017 Antonin Rapini
+** Last update Fri Apr 28 13:26:31 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -100,5 +100,5 @@ int	my_parse_tunnels(char *buffer, int fd, t_lemin *lemin)
 	err = my_add_tunnel(buffer, lemin);
       free(buffer);
     }
-  return (err);
+  return (0);
 }
