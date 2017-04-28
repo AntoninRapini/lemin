@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sun Apr 23 19:03:39 2017 Antonin Rapini
-** Last update Thu Apr 27 23:27:05 2017 Antonin Rapini
+** Last update Fri Apr 28 15:57:59 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -37,7 +37,7 @@ int my_go_forward(t_path **curr, int *iteration, int i)
 void		my_go_back(t_path **curr, int *iteration)
 {
   t_path	*tmp;
-  
+
   if ((tmp = (*curr)->previous) != NULL)
     tmp->next = NULL;
   my_free_path((*curr));

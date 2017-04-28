@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Thu Apr 27 18:11:39 2017 Antonin Rapini
+** Last update Fri Apr 28 15:58:48 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -71,7 +71,8 @@ t_room		*my_getroom(char *buffer)
   return (my_free_room(room));
 }
 
-int		my_add_room(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
+int		my_add_room
+(t_room *room, t_lemin *lemin, int *is_start, int *is_end)
 {
   t_roomlist	*item;
 

@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Mon Apr 17 17:14:24 2017 Antonin Rapini
-** Last update Fri Apr 28 15:49:54 2017 Antonin Rapini
+** Last update Fri Apr 28 16:07:59 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -58,7 +58,7 @@ int		my_add_tunnel(char *buffer, t_lemin *lemin)
   t_room	*room1;
   t_room	*room2;
   char		save;
-  
+
   i = 0;
   while (buffer[i] && buffer[i] != '-')
     i++;

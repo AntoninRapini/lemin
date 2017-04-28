@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Apr 15 15:22:01 2017 Antonin Rapini
-** Last update Wed Apr 26 21:08:17 2017 Antonin Rapini
+** Last update Fri Apr 28 16:08:35 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -23,7 +23,7 @@ int	my_is_comment(char *line)
     i++;
   return (line[i] == '#');
 }
-  
+
 int	my_parse_antcount(int fd, int *antcount)
 {
   char	*buffer;

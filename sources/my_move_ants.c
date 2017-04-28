@@ -5,7 +5,7 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Wed Apr 26 21:21:14 2017 Antonin Rapini
-** Last update Thu Apr 27 23:54:09 2017 Antonin Rapini
+** Last update Fri Apr 28 16:07:14 2017 Antonin Rapini
 */
 
 #include <stdlib.h>
@@ -32,7 +32,8 @@ void my_move_ants_on_path(int *ants_arrived, t_path *path)
     }
 }
 
-void		my_place_ants(int *ants_left, t_pathlist *paths, int ants, int *ants_arrived)
+void		my_place_ants
+(int *ants_left, t_pathlist *paths, int ants, int *ants_arrived)
 {
   t_pathlist	*start;
 
@@ -45,16 +46,16 @@ void		my_place_ants(int *ants_left, t_pathlist *paths, int ants, int *ants_arriv
 	    {
 	      (*ants_left)--;
 	      (*ants_arrived)++;
-	      paths->path->next->room->ant = paths->path->next->next == NULL
-		? 0 : ants - (*ants_left);
-	      my_miniprintf("P%i-%s ", ants - (*ants_left), paths->path->next->room->name);
+	      paths->path->next->room->ant = 0;
+	      my_miniprintf("P%i-%s ", ants - (*ants_left),
+			    paths->path->next->room->name);
 	    }
 	  else if (paths->size - (*ants_left) < start->size)
 	    {
 	      (*ants_left)--;
-	      paths->path->next->room->ant = paths->path->next->next == NULL
-		? 0 : ants - (*ants_left);
-	      my_miniprintf("P%i-%s ", paths->path->next->room->ant, paths->path->next->room->name);
+	      paths->path->next->room->ant = ants - (*ants_left);
+	      my_miniprintf("P%i-%s ", paths->path->next->room->ant,
+			    paths->path->next->room->name);
 	    }
 	}
       paths = paths->next;
