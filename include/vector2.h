@@ -5,11 +5,11 @@
 ** Login   <antonin.rapini@epitech.net>
 ** 
 ** Started on  Sat Feb  4 04:48:57 2017 Antonin Rapini
-** Last update Sat Feb  4 04:50:10 2017 Antonin Rapini
+** Last update Sun Apr 30 21:13:22 2017 Wilka Sombrun
 */
 
 #ifndef VECTOR2_H_
-#define VECTOR2_H_
+# define VECTOR2_H_
 
 typedef struct	s_vector2
 {
